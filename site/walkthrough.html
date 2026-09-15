@@ -1,0 +1,1004 @@
+<!doctype html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The 10-minute walkthrough of leadgen-skills, by Aaxelera</title>
+<meta name="description" content="One run of each of the three leadgen-skills, start to finish, with the files each one writes: the market map, the call notes and next-call sheet, the one-pager and its three-line email. Fictional data throughout.">
+<link rel="canonical" href="https://skills.aaxelera.com/walkthrough">
+<meta name="theme-color" content="#0a0a1a">
+<meta name="color-scheme" content="dark">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://skills.aaxelera.com/walkthrough">
+<meta property="og:site_name" content="Aaxelera">
+<meta property="og:title" content="The 10-minute walkthrough of leadgen-skills">
+<meta property="og:description" content="One run of each of the three skills, start to finish, showing the files each one writes. Fictional data throughout.">
+<meta name="twitter:card" content="summary">
+<style>
+:root {
+  --bg: #0a0a1a;
+  --bg-raised: #10112a;
+  --bg-code: #06071a;
+  --line: rgba(139, 152, 222, 0.18);
+  --line-strong: rgba(139, 152, 222, 0.32);
+  --text: #e7e9f6;
+  --text-muted: #a6abcb;
+  --text-dim: #7f85ab;
+  --cyan: #00d4ff;
+  --blue: #3b82f6;
+  --amber: #f59e0b;
+  --ink: #04121c;
+  --danger: #ffb4a8;
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  --gutter: clamp(1rem, 4vw, 2rem);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html {
+  background: var(--bg);
+  color-scheme: dark;
+  -webkit-text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  html { scroll-behavior: smooth; }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font: 400 1.0625rem/1.65 var(--font);
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+}
+
+[hidden] { display: none !important; }
+
+.sr-only {
+  position: absolute !important;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.wrap {
+  width: min(100% - 2 * var(--gutter), 68rem);
+  margin-inline: auto;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+}
+
+a:hover { color: #f3f5ff; }
+
+:focus-visible {
+  outline: 2px solid var(--cyan);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+::selection { background: rgba(0, 212, 255, 0.3); }
+
+.skip {
+  position: absolute;
+  left: 1rem;
+  top: -4rem;
+  z-index: 10;
+  padding: 0.5rem 0.75rem;
+  background: var(--cyan);
+  color: var(--ink);
+  border-radius: 0.375rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.skip:focus { top: 1rem; }
+
+h1, h2, h3, h4 {
+  margin: 0;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  line-height: 1.1;
+  text-wrap: balance;
+}
+
+h1 { font-size: clamp(2.125rem, 1.35rem + 3.6vw, 3.75rem); }
+
+h2 {
+  font-size: clamp(1.625rem, 1.2rem + 1.6vw, 2.375rem);
+  letter-spacing: -0.015em;
+}
+
+p { margin: 0; }
+
+code {
+  font-family: var(--mono);
+  font-size: 0.875em;
+  color: var(--text);
+  background: var(--bg-code);
+  border: 1px solid var(--line);
+  border-radius: 0.25rem;
+  padding: 0.05em 0.35em;
+  overflow-wrap: anywhere;
+}
+
+pre code {
+  font-size: inherit;
+  color: inherit;
+  background: none;
+  border: 0;
+  border-radius: 0;
+  padding: 0;
+}
+
+/* Header */
+
+.top { border-bottom: 1px solid var(--line); }
+
+.top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 3.75rem;
+}
+
+.wordmark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5rem;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.wordmark:hover { color: var(--text); }
+
+.wordmark-name {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+.wordmark-by {
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.top-link {
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.top-link:hover { color: var(--text); }
+
+/* Intro */
+
+.intro {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(3rem, 9vw, 6.5rem) clamp(2.5rem, 7vw, 4.5rem);
+}
+
+.intro::before {
+  content: "";
+  position: absolute;
+  left: -10%;
+  top: -30%;
+  width: 70%;
+  height: 120%;
+  background: radial-gradient(closest-side, rgba(0, 212, 255, 0.13), rgba(0, 212, 255, 0));
+  pointer-events: none;
+}
+
+.intro .wrap { position: relative; }
+
+.kicker {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.intro h1 {
+  margin-top: 0.75rem;
+  max-width: 22ch;
+}
+
+.lede {
+  margin-top: 1.5rem;
+  max-width: 58ch;
+  font-size: clamp(1.0625rem, 1rem + 0.4vw, 1.25rem);
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.intro-note {
+  margin-top: 1.25rem;
+  max-width: 62ch;
+  color: var(--text-muted);
+}
+
+.chain {
+  list-style: none;
+  margin: 2.25rem 0 0;
+  padding: 0;
+  border-top: 1px solid var(--line);
+}
+
+.chain li {
+  display: grid;
+  gap: 0.375rem;
+  padding: 1.125rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.chain-name {
+  font-family: var(--mono);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  color: var(--cyan);
+}
+
+.chain p {
+  max-width: 64ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--text-muted);
+}
+
+.chain b {
+  font-weight: 600;
+  color: var(--text);
+}
+
+@media (min-width: 52rem) {
+  .chain li {
+    grid-template-columns: 11rem minmax(0, 1fr);
+    column-gap: 2rem;
+  }
+
+  .chain-name { grid-row: 1 / span 2; }
+}
+
+.toc {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 1.5rem 0 0;
+  padding: 0;
+  list-style: none;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+}
+
+.toc a {
+  color: var(--text-muted);
+  text-decoration: none;
+}
+
+.toc a:hover { color: var(--cyan); }
+
+.toc span {
+  margin-right: 0.375rem;
+  color: var(--amber);
+}
+
+/* One run per skill */
+
+.run {
+  padding-block: clamp(3rem, 8vw, 5.5rem);
+  border-top: 1px solid var(--line);
+}
+
+.run-index {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.run h2 {
+  margin-top: 0.5rem;
+  font-family: var(--mono);
+  letter-spacing: 0;
+  color: var(--cyan);
+}
+
+.run .lead {
+  margin-top: 1rem;
+  max-width: 58ch;
+  font-size: 1.125rem;
+  color: var(--text-muted);
+}
+
+.label {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: var(--amber);
+}
+
+.prose {
+  margin-top: 0.875rem;
+  max-width: 62ch;
+  color: var(--text-muted);
+}
+
+.cmd {
+  margin-top: 0.875rem;
+  background: var(--bg-code);
+  border: 1px solid var(--line-strong);
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+
+.cmd pre {
+  margin: 0;
+  padding: 1rem 1.25rem;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  line-height: 1.75;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+}
+
+.steps {
+  list-style: none;
+  margin: 0.875rem 0 0;
+  padding: 0;
+  max-width: 68ch;
+  counter-reset: step;
+  border-top: 1px solid var(--line);
+}
+
+.steps li {
+  counter-increment: step;
+  display: grid;
+  grid-template-columns: 2rem minmax(0, 1fr);
+  gap: 0.75rem;
+  padding: 0.75rem 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.9375rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.steps li::before {
+  content: counter(step, decimal-leading-zero);
+  padding-top: 0.2rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  letter-spacing: 0.06em;
+  color: var(--amber);
+}
+
+.steps b {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.file {
+  margin-top: 0.875rem;
+  background: var(--bg-code);
+  border: 1px solid var(--line-strong);
+  border-radius: 0.625rem;
+  overflow: hidden;
+}
+
+.file + .file { margin-top: 1rem; }
+
+.file-bar {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.25rem 1rem;
+  padding: 0.5rem 0.875rem;
+  border-bottom: 1px solid var(--line);
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.file-bar b {
+  font-weight: 600;
+  color: var(--text);
+  overflow-wrap: anywhere;
+}
+
+.file pre {
+  margin: 0;
+  padding: 1rem 1.125rem 1.125rem;
+  overflow-x: auto;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1.7;
+  color: var(--text);
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  tab-size: 2;
+}
+
+.elide {
+  display: block;
+  color: var(--text-dim);
+  font-style: italic;
+}
+
+/* Rendered excerpts: the map header and the one-pager */
+
+.band {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 0.5rem 0.75rem;
+  margin-top: 0.875rem;
+  padding: 0.875rem 1rem;
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+}
+
+.band + .band { margin-top: 0.625rem; }
+
+.band h4 {
+  margin-right: 0.25rem;
+  font-size: 1rem;
+  letter-spacing: -0.01em;
+}
+
+.score {
+  display: inline-block;
+  padding: 0.2rem 0.65rem;
+  border: 1px solid;
+  border-radius: 999px;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.score.good {
+  color: var(--cyan);
+  border-color: rgba(0, 212, 255, 0.45);
+}
+
+.score.mixed {
+  color: var(--amber);
+  border-color: rgba(245, 158, 11, 0.5);
+}
+
+.band-note {
+  width: 100%;
+  font-size: 0.875rem;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.page {
+  margin-top: 0.875rem;
+  padding: clamp(1.125rem, 3vw, 1.75rem);
+  background: var(--bg-raised);
+  border: 1px solid var(--line);
+  border-radius: 0.75rem;
+}
+
+.page h4 {
+  font-size: clamp(1.25rem, 1.05rem + 0.9vw, 1.75rem);
+  letter-spacing: -0.02em;
+}
+
+.page .sub {
+  margin-top: 0.5rem;
+  font-size: 0.9375rem;
+  color: var(--text-muted);
+}
+
+.page h5 {
+  margin: 1.5rem 0 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.page p {
+  margin-top: 0.75rem;
+  max-width: 64ch;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.page .bench {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.figs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+  margin-top: 1rem;
+}
+
+@media (min-width: 40rem) {
+  .figs { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+
+.fig {
+  padding: 1rem 1.125rem 1.125rem;
+  background: var(--bg);
+  border: 1px solid var(--line);
+  border-radius: 0.625rem;
+}
+
+.fig .n {
+  display: block;
+  font-family: var(--mono);
+  font-size: clamp(1.75rem, 1.4rem + 1.5vw, 2.5rem);
+  font-weight: 600;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+  color: var(--cyan);
+}
+
+.fig .l {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+/* Buttons */
+
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem;
+  padding: 0.75rem 1.5rem;
+  border-radius: 0.5rem;
+  border: 1px solid transparent;
+  font: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  cursor: pointer;
+  transition: background-color 0.2s var(--ease), box-shadow 0.25s var(--ease), color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+
+.button-primary {
+  background: var(--cyan);
+  color: var(--ink);
+}
+
+.button-primary:hover {
+  background: #4ee0ff;
+  color: var(--ink);
+  box-shadow: 0 10px 30px -12px rgba(0, 212, 255, 0.55);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--cyan);
+  border-color: rgba(0, 212, 255, 0.45);
+}
+
+.button-secondary:hover {
+  background: rgba(0, 212, 255, 0.08);
+  border-color: var(--cyan);
+  color: var(--cyan);
+}
+
+/* Closing */
+
+.next {
+  padding-block: clamp(3rem, 8vw, 6rem);
+  border-top: 1px solid var(--line);
+  background: linear-gradient(180deg, rgba(59, 130, 246, 0.07), rgba(59, 130, 246, 0) 70%);
+}
+
+.next p {
+  margin-top: 1rem;
+  max-width: 56ch;
+  color: var(--text-muted);
+}
+
+.next-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.75rem;
+}
+
+/* Footer */
+
+.foot {
+  padding-block: 1.75rem 2.5rem;
+  border-top: 1px solid var(--line);
+  font-size: 0.875rem;
+  color: var(--text-dim);
+}
+
+.foot a { color: var(--text-muted); }
+
+.foot a:hover { color: var(--text); }
+</style>
+</head>
+<body>
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="top">
+  <div class="wrap top-row">
+    <a class="wordmark" href="/"><span class="wordmark-name">leadgen-skills</span><span class="wordmark-by">by Aaxelera</span></a>
+    <a class="top-link" href="https://github.com/montgomery-pixel/leadgen-skills" rel="noopener">GitHub</a>
+  </div>
+</header>
+
+<main id="main">
+
+  <section class="intro" aria-labelledby="intro-title">
+    <div class="wrap">
+      <p class="kicker">The 10-minute walkthrough</p>
+      <h1 id="intro-title">One run of each skill, start to finish.</h1>
+      <p class="lede">Three Claude Code skills that do the first steps of B2B lead generation the way a research-first outreach shop does it. Map a whole market from public records. Turn a sales call into notes you can prove. Send one page per prospect built from their own numbers.</p>
+      <p class="intro-note">This page shows one run of each skill, in pack order: the command you type, what the skill does at each of its numbered steps, and the files it writes, shown as they come out. Every example is fictional (Harbor Lights Hotel, Fensworth Clubs, Fairway and Fern, Dana Reyes at Fensworth Advisory). None of it is a real client.</p>
+
+      <ul class="chain">
+        <li>
+          <span class="chain-name">prospect-map</span>
+          <p><b>In:</b> a niche and a geography.</p>
+          <p><b>Out:</b> <code>market.csv</code> (the count), <code>rows.json</code> (owner, status, evidence per entity), <code>map.html</code> (the page with a dated watch list).</p>
+        </li>
+        <li>
+          <span class="chain-name">discovery-sheet</span>
+          <p><b>In:</b> a call transcript or your notes.</p>
+          <p><b>Out:</b> <code>CALL-NOTES-&lt;prospect&gt;-&lt;date&gt;.md</code> (facts, quotes, every number on its own line, the ICP in their words) and <code>SKELETON-&lt;prospect&gt;-&lt;next&gt;.md</code> (what you hold on the next call).</p>
+        </li>
+        <li>
+          <span class="chain-name">one-pager</span>
+          <p><b>In:</b> a research file with sourced facts, optionally your voice profile.</p>
+          <p><b>Out:</b> <code>&lt;prospect&gt;-page.html</code> (print-ready), <code>&lt;prospect&gt;-email.txt</code> (three lines plus your sign-off), <code>&lt;prospect&gt;-notes.md</code> (a source per claim).</p>
+        </li>
+      </ul>
+
+      <p class="intro-note">They chain. <code>rows.json</code> from the map is a valid research file for <code>one-pager</code>. So is the <code>CALL-NOTES</code> file from <code>discovery-sheet</code>.</p>
+
+      <ul class="toc" aria-label="Contents">
+        <li><a href="#prospect-map"><span aria-hidden="true">01</span>prospect-map</a></li>
+        <li><a href="#discovery-sheet"><span aria-hidden="true">02</span>discovery-sheet</a></li>
+        <li><a href="#one-pager"><span aria-hidden="true">03</span>one-pager</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="run" id="prospect-map" aria-labelledby="prospect-map-title">
+    <div class="wrap">
+      <span class="run-index" aria-hidden="true">01</span>
+      <h2 id="prospect-map-title">prospect-map</h2>
+      <p class="lead">Count every business in your niche and geography from public records. Every row carries its owner, its status and the evidence behind it, dated.</p>
+
+      <h3 class="label">The command</h3>
+      <p class="prose">Form: <code>/prospect-map "&lt;niche&gt;" "&lt;geography&gt;"</code>. This run:</p>
+      <div class="cmd"><pre><code>/prospect-map "restaurant operator for full-service hotels" "North Shore coast"</code></pre></div>
+      <p class="prose">The first argument is what you sell and to whom, the second is where to count. The skill writes its working folder at <code>prospect-map/&lt;niche&gt;-&lt;geography&gt;/</code>, pulls the public licence and parcel files first, and runs verification agents only on the rows that need them. This market covers three regions: North Shore, East Valley and Cape Bell.</p>
+
+      <h3 class="label">What it does</h3>
+      <ol class="steps">
+        <li><b>The split question.</b> Before touching a source, write into <code>journal.md</code> who pays whom, the one question a public record can answer, the four tests for this niche, the inclusion rule for the count and the region granularity.</li>
+        <li><b>Enumerate in bulk.</b> Pull the state licence file, county parcel layers and association lists, filter to the inclusion rule, dedupe on an address key, write <code>market.csv</code>, run the address join, then seed <code>rows.json</code> with one row per entity.</li>
+        <li><b>Owner of record.</b> Bulk parcel pull, join by address, cluster by owner mailing address, unmask the LLC through the registry and filings. Write <code>owner</code>, <code>ownerConfidence</code> and <code>ownerEvidence</code>; unknown says unknown with the reason.</li>
+        <li><b>Verify in refute mode.</b> One agent per candidate row tries to disprove it and may keep it only with evidence dated this year. Four tests (separate party, employer of record, inside the premises, live today) decide ready, licensed, verify, transition or aside.</li>
+        <li><b>Watch-list triggers.</b> Attach a dated, sourced trigger to any row where the record shows a sale, an ownership or operator change, a renovation or closure, a new build, an authority-held title or a default. Fact, not forecast.</li>
+        <li><b>Render.</b> Rewrite <code>map.config.json</code> for this market, run <code>render_map.py --check</code>, then render <code>map.html</code>. The renderer computes every number on the page from the rows and refuses blank evidence, a missing date, an unknown status or a dash in any rendered field.</li>
+        <li><b>Honesty pass.</b> Open <code>map.html</code> and check: every row states its evidence and a date, no contacts, no personal names, no narration of rework, the Ready count described as a floor, and five rows re-opened at random against their cited source.</li>
+      </ol>
+
+      <h3 class="label">What comes out</h3>
+      <p class="prose">Three files. <code>market.csv</code> holds the count, one line per hotel. <code>rows.json</code> holds every entity with its owner, counterparty, status, evidence and trigger. <code>map.html</code> is the page, and its header on this market reads:</p>
+
+      <div class="band">
+        <h4>The market, counted</h4>
+        <span class="score good">14 full-service hotels</span>
+        <p class="band-note">Counted from the state liquor licence file, the regional lodging association's member list and press coverage, filtered to full-service properties, August 2026. 13 of the 14 carry an owner from the county parcel record, a registry filing or the owner's own portfolio page; the rest say unknown. Confidence in the owner name: 8 high, 4 medium, 1 low, 1 unknown.</p>
+      </div>
+      <div class="band">
+        <h4>The hotels where a third party already runs the restaurant</h4>
+        <span class="score good">4 ready</span>
+        <span class="score mixed">1 licensed</span>
+        <span class="score mixed">1 verify</span>
+        <span class="score mixed">1 in transition</span>
+      </div>
+      <div class="band">
+        <h4>Deals coming loose</h4>
+        <span class="score mixed">6 shown</span>
+      </div>
+
+      <p class="prose">The renderer computes every header number from the rows, so the header cannot disagree with the table. Three of the 14 rows, as written:</p>
+
+      <div class="file">
+        <div class="file-bar"><b>rows.json</b><span>3 of 14 rows</span></div>
+<pre><code>[
+  {
+    "region": "NS",
+    "city": "Port Ashby",
+    "entity": "Harbor Lights Hotel",
+    "address": "12 Quay Street, Port Ashby",
+    "unit": "The Lantern Room; Quay Bar is hotel-run",
+    "counterparty": "Fensworth Clubs runs The Lantern Room under a lease and holds its own liquor licence at 12 Quay Street; the hotel's dining page names Fensworth as the operator",
+    "owner": "Quay Street Hospitality LLC (Ockendale Family Holdings)",
+    "ownerConfidence": "high",
+    "ownerEvidence": "the county parcel record, 14 August 2026; the deed LLC's mailing address is Ockendale Family Holdings' registered office",
+    "status": "ready",
+    "statusEvidence": "Fensworth Clubs lists The Lantern Room as a current location and posted from it on 2 September 2026; the state licence file shows the Fensworth licence active on 28 August 2026.",
+    "evidenceDate": "2026-09-02"
+  },
+  {
+    "region": "EV",
+    "city": "Fenwick",
+    "entity": "The Fenwick Hotel",
+    "address": "210 Station Street, Fenwick",
+    "unit": "Osteria Quintale (opened April 2026 in the former Cobalt Room space)",
+    "counterparty": "Marrowgate Hospitality Group runs the kitchen; the hotel markets it as its own restaurant; whether this is a lease or an owner-affiliated venture is not confirmed",
+    "owner": "Fenwick Hotel Owner LLC (Kestlemoor Hotel Group)",
+    "ownerConfidence": "medium",
+    "ownerEvidence": "the county parcel record, 14 August 2026; the Kestlemoor link rests on the registry's registered agent only",
+    "status": "verify",
+    "statusEvidence": "Osteria Quintale's own page says it is inside The Fenwick Hotel, June 2026; no licence in Marrowgate Hospitality's name appears at 210 Station Street in the August 2026 file.",
+    "evidenceDate": "2026-08-11"
+  },
+  {
+    "region": "CB",
+    "city": "Salt Hollow",
+    "entity": "Salt Hollow Resort",
+    "address": "3000 Dune Road, Salt Hollow",
+    "unit": "Driftline Kitchen",
+    "counterparty": "Driftline Restaurant Co. under a lease, open, with its own licence at 3000 Dune Road",
+    "owner": "Salt Hollow Resort LLC (Drindle Partners); a sale to a Brindlewick Holdings entity was approved by the county development authority on 21 May 2026, closing not publicly confirmed",
+    "ownerConfidence": "medium",
+    "ownerEvidence": "the county parcel record, 14 August 2026, still names Salt Hollow Resort LLC; the authority's published minutes of 21 May 2026 record the approved assignment",
+    "status": "transition",
+    "statusEvidence": "Driftline's site and listings updated August 2026; the resort's dining page lists Driftline Kitchen.",
+    "evidenceDate": "2026-08-22",
+    "note": "The authority's minutes record the buyer's representative stating that the current restaurant operator is expected to stay in place. No later county document confirms the closing.",
+    "trigger": {
+      "what": "Sale of the resort to a Brindlewick Holdings entity approved by the county development authority; buyer expects to keep the restaurant operator in place. Closing not publicly confirmed.",
+      "when": "Approved 21 May 2026",
+      "source": "development authority minutes; county parcel record still names the seller",
+      "sortDate": "2026-05-21"
+    }
+  }
+]</code></pre>
+      </div>
+
+      <p class="prose">Aside rows, the hotels that run their restaurant in-house today, are counted in the header and never listed. Working fields such as <code>address</code> and <code>sources</code> never render, so parcel numbers and URLs stay off the page. A transition row must carry its trigger, and the Salt Hollow trigger is what puts it on the watch list.</p>
+      <p class="prose">The reply in chat gives the count, the table split and the watch-list size, each on its own line, then the path to <code>map.html</code>, then what is queued for a human in <code>manual-queue.md</code>. The full page for this market, all 14 hotels with the table, the watch list and the method block, is <a href="/example-map.html">the sample map</a>.</p>
+    </div>
+  </section>
+
+  <section class="run" id="discovery-sheet" aria-labelledby="discovery-sheet-title">
+    <div class="wrap">
+      <span class="run-index" aria-hidden="true">02</span>
+      <h2 id="discovery-sheet-title">discovery-sheet</h2>
+      <p class="lead">Turn a call transcript into notes you can prove: every number, every quote, the ICP in their words, plus the next-call sheet.</p>
+
+      <h3 class="label">The input</h3>
+      <p class="prose">A 24-minute speaker-labelled transcript. Sam Ortega sells an outbound service that books first conversations with buyers. Priya Lindqvist is CEO of Fairway and Fern, which runs outsourced grounds maintenance for private golf clubs. Sam sent a one-page proposal before the call. Two lines from the file:</p>
+      <div class="file">
+        <div class="file-bar"><b>calls/fairway-fern-2026-03-10.txt</b><span>excerpt</span></div>
+<pre><code>[01:05] SAM: What does a club pay you?
+[01:09] PRIYA: Flat monthly. Somewhere between twenty-two and twenty-eight thousand a
+month depending on acreage and how many holes. And there's a bonus if the course hits the
+member satisfaction target, usually another five percent on the year.</code></pre>
+      </div>
+
+      <h3 class="label">The command</h3>
+      <p class="prose">Form: <code>/discovery-sheet &lt;transcript&gt; "&lt;prospect&gt;"</code>. This run:</p>
+      <div class="cmd"><pre><code>/discovery-sheet calls/fairway-fern-2026-03-10.txt "Priya Lindqvist"</code></pre></div>
+      <p class="prose">Point it at a transcript (<code>.txt</code>, <code>.md</code>, <code>.vtt</code>, <code>.srt</code>, or a recorder's <code>.json</code>) or at your own notes. The prospect name is optional; quote it if it has spaces. Both files land beside the input. Nothing in them comes from outside the file: no web search, no invented mood, no rapport that was not said in words.</p>
+
+      <h3 class="label">What it does</h3>
+      <ol class="steps">
+        <li><b>Read the whole file before writing a word.</b> Note the source type, call date and time, duration, who was on it, what was shown and who did most of the talking. Set the quote grade once: VERBATIM for a transcript, NOTES for paraphrase, MIXED for an extract.</li>
+        <li><b>Build the fact ledger.</b> One line per fact, quote first, tagged NUM, BINDS, Q, NEXT or ICP. No interpretation yet.</li>
+        <li><b>Name the one number.</b> The single figure that decides whether the deal is worth doing and what to charge for it. Captured, it leads THE NUMBERS. Not captured, it becomes line one of the SKELETON.</li>
+        <li><b>Write CALL NOTES.</b> Fixed section order. One bold figure per bullet with the quote it came from. Interpretation labelled every time: Arithmetic, Read or Unverified. What was not said is recorded as a fact.</li>
+        <li><b>Write the SKELETON.</b> Fact bullets the seller can read aloud, not a script. BRIEFED gives one line to every person, company and document named below it. VERIFY runs before any pitch, show or price.</li>
+        <li><b>Review pass.</b> Zero dashes, zero confession words in anything read aloud, every quote findable in the source, every proper noun on the SKELETON in BRIEFED, no invented rapport.</li>
+        <li><b>Hand over.</b> The two file paths, the one number and whether it was captured, the WALK OUT WITH list, and any conflicts or speaker-label flags. No re-summary in chat.</li>
+      </ol>
+
+      <h3 class="label">What comes out</h3>
+      <p class="prose">Two files, written beside the transcript. The first is the record. Its header states where every line came from and the quote grade; THE NUMBERS gives every figure Priya said its own bullet, in bold, followed by the words it came from.</p>
+
+      <div class="file">
+        <div class="file-bar"><b>calls/CALL-NOTES-priya-2026-03-10.md</b><span>excerpt</span></div>
+<pre><code># CALL NOTES: Priya Lindqvist, Fairway and Fern, 10 March 2026, 10:00 PT (24 minutes)
+
+Source: calls/fairway-fern-2026-03-10.txt. Grade: VERBATIM. Shown: nothing. Who talked:
+Priya volunteered most of it; Sam led with short questions. Flags: none.
+
+<span class="elide">[OUTCOME, six bullets, omitted here]</span>
+## THE ONE NUMBER
+What a typical club makes them in year one after the superintendent and crew.
+Not captured. "Depends on the property. I'd have to ask Tom for a real number. Some of
+them are thin the first year." Tom holds it. Line one of the SKELETON.
+
+## THE NUMBERS (verbatim where it matters)
+- Clubs today: **eleven.** "We've got eleven clubs now."
+- Signing this quarter: **two,** "hopefully."
+- Monthly fee per club: **$22,000 to $28,000.** "Somewhere between twenty-two and
+  twenty-eight thousand a month depending on acreage and how many holes."
+- Bonus: **usually another 5% on the year.** "there's a bonus if the course hits the
+  member satisfaction target, usually another five percent on the year."
+- Up front: **one month,** "Mobilization fee, one month up front."
+- Billing starts: **the day the contract starts.** "the clock starts at signing."
+- Onboarding: **about ninety days** "before we're really running it."
+- Grounds-budget floor: **$300,000 a year.** "Below three hundred it doesn't work, we
+  can't put a superintendent on it."
+- Course size: **eighteen to thirty-six holes.** "Private, eighteen to thirty-six holes,
+  grounds budget over three hundred thousand a year."
+- Capacity: **four new clubs a year, tops.** "After four we'd need a second regional
+  super, and that's a hire we'd only make with contracts in hand."
+- Sales cycle, member-owned: **nine months to a year.** "the board has to vote on
+  everything."
+- Sales cycle, corporate-owned: **six weeks** in one case. "We've done a corporate one in
+  six weeks."
+- Her first-term ask: **four months.** "a short first term, four months, until we've got
+  a couple signed."
+- Arithmetic: one club is $264,000 to $336,000 gross a year on the monthly alone.
+- Arithmetic: the bonus, when hit, adds roughly $13,000 to $17,000 on a year.
+<span class="elide">[eight sections omitted: ICP IN THEIR WORDS, DEAL ECONOMICS, WHO THEY ARE, WHAT THE SELLER SAID THAT NOW BINDS US, WHAT THEY ASKED US, OPEN QUESTIONS, CONFLICTS, NEXT CALL: WHAT HAS TO HAPPEN]</span></code></pre>
+      </div>
+
+      <p class="prose">Two figures in one bullet is a defect the review pass catches, and the Arithmetic lines are labelled as sums the skill did, not things Priya said. The one number was not captured on the call, so it becomes the first line of the second file, the sheet Sam holds on Thursday.</p>
+
+      <div class="file">
+        <div class="file-bar"><b>calls/SKELETON-priya-2026-03-12.md</b><span>excerpt</span></div>
+<pre><code># PRIYA, THURSDAY AFTER 2:00 PM PT
+
+Minute 12 without her year-one margin on a typical club: drop everything and ask it.
+Tom holds the number.
+
+## WALK OUT WITH
+1. Year-one margin on a typical club, after the superintendent and the crew.
+2. Her answer on clubs that already use an outside grounds company: prospect or dead end.
+3. Her answer on resorts, communities and universities with a course: on the list or not.
+4. Tom's yes, or the date Tom is in the room.
+<span class="elide">[BRIEFED, ORDER, VERIFY, DISCOVERY A to E, TERMS and NEVER follow]</span></code></pre>
+      </div>
+
+      <p class="prose">Every bullet is a full sentence Sam can say aloud as written. Every person, company and document named on the sheet gets one line under BRIEFED before it appears in a question. The reply in chat: the two paths, the one number and that it was not captured, the WALK OUT WITH list, and no conflicts or speaker-label flags.</p>
+    </div>
+  </section>
+
+  <section class="run" id="one-pager" aria-labelledby="one-pager-title">
+    <div class="wrap">
+      <span class="run-index" aria-hidden="true">03</span>
+      <h2 id="one-pager-title">one-pager</h2>
+      <p class="lead">One personalised page per prospect, built from their own numbers, in your voice, with the three-line email that carries it. Sourced facts only.</p>
+
+      <h3 class="label">The input</h3>
+      <p class="prose">A research file on Harbor Lights Hotel, the same fictional hotel that sits in the map above, compiled by Dana Reyes of Fensworth Advisory, with a source beside each fact. Two of its lines:</p>
+      <div class="file">
+        <div class="file-bar"><b>research/harbor-lights-hotel.md</b><span>2 of 11 lines</span></div>
+<pre><code>- 64 rooms and suites. Source: harborlightshotel.example home page, fetched 2026-08-18.
+- Rate scan: Standard King, 2 adults, 30 nights from 2026-08-20 to 2026-09-18, the hotel's own site against its largest OTA listing ("the OTA" below). Own site higher on 19 nights, equal on 8, lower on 3. Sum of the gaps on the 19 higher nights: $304. Source: research/harbor-lights/rate-scan.csv, collected 2026-08-18 14:00 local.</code></pre>
+      </div>
+      <p class="prose">The second input is Dana's voice profile: her greeting, her exact sign-off ("Best," then "Dana"), her sentence length (median 13 words, longest 24), the words she favours, and the sender line that fills the page footer.</p>
+
+      <h3 class="label">The command</h3>
+      <p class="prose">Form: <code>/one-pager &lt;research-file&gt; [voice-profile]</code>. This run:</p>
+      <div class="cmd"><pre><code>/one-pager research/harbor-lights-hotel.md voice-profile.md</code></pre></div>
+      <p class="prose">The research file needs at least three facts with sources (a URL, a document, a filing, or "call with &lt;name&gt;, &lt;date&gt;"). The voice profile is optional; the skill can build one from 5 to 10 of your own unassisted messages. Output goes to <code>one-pager/</code> beside the research file. The page is the personalisation; the email stays at three lines.</p>
+
+      <h3 class="label">What it does</h3>
+      <ol class="steps">
+        <li><b>Build the claim ledger.</b> Every prospect-specific fact as a row: claim, source, date checked, status. VERIFIED and STATED may appear on the page as statements; BENCHMARK once, labelled; INFERRED only as a question or an if; UNSOURCED never.</li>
+        <li><b>Put the situation in their own numbers.</b> Up to three figures from the ledger, computed in the notes, in the prospect's own units and wording.</li>
+        <li><b>Choose one finding.</b> Specific to this prospect, sourced, consequential in their numbers, and something they can act on. The two runners-up go in the notes with a line on why they lost.</li>
+        <li><b>Write what it would take.</b> Three steps at most, concrete enough to start on Monday, and one effort line. No pricing unless the research file supplies it with a source.</li>
+        <li><b>Write the ask.</b> One question with a concrete unit of time. Never two options.</li>
+        <li><b>Fill the page.</b> Copy the template, replace every placeholder, delete what was not used. The footer carries the sender line and the sourcing standard in one sentence.</li>
+        <li><b>Write the email.</b> A subject of six words or fewer, three body lines (what this is, the finding with its one figure, the ask), then the sender's sign-off exactly as the profile gives it.</li>
+        <li><b>Self-review, fix, re-run.</b> Grep all three files for dashes and the page body and email for banned phrases, count the words, print to one sheet. Fix every hit and run again until clean; the final output goes in the notes.</li>
+        <li><b>Report.</b> The three paths, the finding in one sentence, and the INFERRED and UNSOURCED rows to verify before sending.</li>
+      </ol>
+
+      <h3 class="label">What comes out</h3>
+      <p class="prose">Three files in <code>one-pager/</code>. The page opens with the situation in the hotel's own numbers, then one finding:</p>
+
+      <div class="page" aria-label="Excerpt of harbor-lights-hotel-page.html, rendered">
+        <h4>Harbor Lights Hotel: direct bookings over the next 30 nights</h4>
+        <p class="sub">Prepared for Marisol Vance, General Manager · 18 August 2026</p>
+
+        <h5>Where Harbor Lights stands</h5>
+        <div class="figs">
+          <div class="fig"><span class="n">64</span><span class="l">rooms and suites, per the hotel's own site</span></div>
+          <div class="fig"><span class="n">19 of 30</span><span class="l">nights where the hotel's own site is priced above the OTA (Standard King, 2 adults, 20 Aug to 18 Sep)</span></div>
+          <div class="fig"><span class="n">3 of 40</span><span class="l">most recent OTA reviews where the guest says they gave up on the hotel's site and booked on the OTA</span></div>
+        </div>
+        <p>Harbor Lights takes bookings on its own site and is listed on the OTA. Peak season runs June to September, so the nights in the scan fall inside the busiest weeks of the year. The scan priced the same room for the same two adults on both channels, night by night, on 18 August.</p>
+
+        <h5>One finding</h5>
+        <p>On most of the next 30 nights, a guest who prices a Standard King on harborlightshotel.example sees a higher rate than the same room on the OTA. A guest who stays on the site then has to open an account before paying. Recent OTA reviews include guests who say they gave up on the hotel's site and booked on the OTA instead.</p>
+        <p>A booking that starts on the hotel's site and ends on the OTA carries the OTA's commission. Matching the rate and shortening the booking flow would remove both reasons to leave.</p>
+        <p class="bench">Industry surveys put OTA commission for independent hotels in the region at 15 to 18% (Coastal Lodging Association, 2025 distribution survey).</p>
+      </div>
+
+      <p class="prose">Below the finding, the page carries What it would take (three steps and one effort line), One ask, and a footer with Dana's sender line and the sourcing standard in one sentence. The $304 across 19 nights becomes $16 a night in the notes and sets the first step: match the own-site rate to the OTA on every night in the scan.</p>
+
+      <p class="prose">The email carries the page. Line one is the only rapport allowed, a sourced meeting stated as the fact it is. Line two is the finding with the page's one figure. Line three is the ask.</p>
+
+      <div class="file">
+        <div class="file-bar"><b>one-pager/harbor-lights-hotel-email.txt</b><span>complete</span></div>
+<pre><code>Subject: Harbor Lights rate scan
+
+Hi Marisol,
+
+We spoke about direct bookings at the Coastal Lodging meeting in June. I ran a rate check on Harbor Lights and put it on one page, attached.
+
+On 19 of the next 30 nights your own site is priced above the OTA.
+
+Would a 20 minute walk-through be useful this week or next?
+
+Best,
+Dana</code></pre>
+      </div>
+
+      <p class="prose">The notes file is the receipt: a claim ledger of 13 rows, each with its source, the date checked and a status. Row 11, a 2024 news item saying the hotel added 12 rooms, is UNSOURCED and stays off the page. Row 9, a phone number that differs between the hotel's site and its business profile, is kept for the call. The last block records the checks:</p>
+
+      <div class="file">
+        <div class="file-bar"><b>one-pager/harbor-lights-hotel-notes.md</b><span>excerpt</span></div>
+<pre><code>## Checks run
+- Dash grep on all three files: no output. Banned-phrase grep on the page body (stylesheet stripped) and the email: no output. Hand-review grep: no output.
+- Page prose: 308 words (whole page with title, figure labels and footer: 435). Email file: 62 words, body 53.
+- Headless Chrome print with --no-pdf-header-footer: 1 page at Letter, 1 page at A4.</code></pre>
+      </div>
+
+      <p class="prose">The reply in chat gives the three paths, the finding in one sentence, and the INFERRED and UNSOURCED rows to check before sending. Nothing else.</p>
+    </div>
+  </section>
+
+  <section class="next" id="next" aria-labelledby="next-title">
+    <div class="wrap">
+      <h2 id="next-title">Run it on your own market</h2>
+      <p>Two commands inside Claude Code install all three skills. No API keys, no accounts, nothing to pay for. The sample map is the full rendered page for the market above, all 14 hotels, so you can see what every row carrying its evidence looks like before you run it on your own.</p>
+      <div class="next-actions">
+        <a class="button button-primary" href="/#install">Install the pack</a>
+        <a class="button button-secondary" href="/example-map.html">Open the sample map</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="foot">
+  <div class="wrap">
+    <p>leadgen-skills by Aaxelera. MIT licence. <a href="https://github.com/montgomery-pixel/leadgen-skills" rel="noopener">GitHub</a>. <a href="https://aaxelera.com">aaxelera.com</a>.</p>
+  </div>
+</footer>
+</body>
+</html>
