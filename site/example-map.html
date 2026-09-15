@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Hotels on the North Shore coast where someone else runs the restaurant</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,600;8..60,700&family=Source+Sans+3:wght@400;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap">
+<style>
+  :root {
+    --paper: #FAFAF8; --card: #FFFFFF; --ink: #1A1F26; --ink-2: #4A545F; --ink-3: #7C8794;
+    --rule: #E0E3E0; --yes: #1F6B4A; --yes-bg: #E3F0E9; --no: #9C3A32; --no-bg: #F8E7E5;
+    --cite: #8A5A12; --cite-bg: #ECEDEA; --accent: #1F4E6B;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --paper: #0F1216; --card: #171C22; --ink: #EDEFF2; --ink-2: #B0B9C3; --ink-3: #808B97;
+      --rule: #2A323A; --yes: #63C79A; --yes-bg: #14291F; --no: #E38A82; --no-bg: #2B1917;
+      --cite: #E0B060; --cite-bg: #23272C; --accent: #7FB8D8;
+    }
+  }
+  :root[data-theme="dark"] {
+    --paper: #0F1216; --card: #171C22; --ink: #EDEFF2; --ink-2: #B0B9C3; --ink-3: #808B97;
+    --rule: #2A323A; --yes: #63C79A; --yes-bg: #14291F; --no: #E38A82; --no-bg: #2B1917;
+    --cite: #E0B060; --cite-bg: #23272C; --accent: #7FB8D8;
+  }
+  * { box-sizing: border-box; }
+  body { background: var(--paper); color: var(--ink); font-family: "Source Sans 3", ui-sans-serif, system-ui, sans-serif; font-size: 18px; line-height: 1.55; margin: 0; }
+  .wrap { max-width: 1000px; margin: 0 auto; padding: 0 26px 80px; }
+  h1, h2 { font-family: "Source Serif 4", Georgia, serif; margin: 0; line-height: 1.15; }
+  header { padding: 52px 0 26px; border-bottom: 3px solid var(--ink); display: flex; flex-direction: column; gap: 12px; }
+  header h1 { font-size: clamp(32px, 5.5vw, 46px); font-weight: 700; }
+  header .sub { font-size: 18.5px; color: var(--ink-2); max-width: 62ch; }
+  header .meta, .mono { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  section { margin-top: 46px; }
+  .band { display: flex; align-items: baseline; gap: 14px; flex-wrap: wrap; margin-bottom: 6px; }
+  .band h2 { font-size: 25px; font-weight: 600; }
+  .band .score { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 13px; font-weight: 600; letter-spacing: 0.06em; padding: 4px 11px; border-radius: 3px; }
+  .score.good { background: var(--yes-bg); color: var(--yes); }
+  .score.mixed { background: var(--rule); color: var(--ink-2); }
+  .band-note { color: var(--ink-2); font-size: 17px; max-width: 68ch; margin: 0 0 18px; }
+  .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 14px 0 6px; }
+  .chip { background: var(--card); border: 1px solid var(--rule); border-radius: 5px; padding: 12px 18px; display: flex; align-items: baseline; gap: 10px; }
+  .chip .n { font-family: "Source Serif 4", Georgia, serif; font-size: 30px; font-weight: 700; line-height: 1; color: var(--accent); }
+  .chip .l { font-size: 15px; color: var(--ink-2); }
+  .chip .l small { display: block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-top: 3px; }
+  .grid-head, .row { display: grid; gap: 10px; align-items: start; }
+  .grid-head.h7, .row.r7 { grid-template-columns: 44px minmax(90px, 0.8fr) minmax(180px, 1.7fr) minmax(140px, 1.3fr) minmax(160px, 1.5fr) minmax(160px, 1.5fr) minmax(112px, 0.8fr); }
+  .grid-head.h5, .row.r5 { grid-template-columns: 44px minmax(100px, 0.8fr) minmax(180px, 1.5fr) minmax(260px, 2.6fr) minmax(180px, 1.5fr); }
+  .grid-head { padding: 0 16px 8px; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; color: var(--ink-3); }
+  .grid-head.h7 span:last-child { text-align: center; }
+  .row { background: var(--card); border: 1px solid var(--rule); border-radius: 5px; padding: 15px 16px; margin-bottom: 9px; font-size: 15.5px; line-height: 1.4; }
+  .row .st { font-family: "IBM Plex Mono", ui-monospace, monospace; font-weight: 600; font-size: 13px; letter-spacing: 0.06em; color: var(--ink-3); }
+  .row .hn { font-weight: 600; color: var(--ink); }
+  .row .dim { color: var(--ink-2); }
+  .cell { text-align: center; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11.5px; font-weight: 600; letter-spacing: 0.06em; padding: 7px 4px; border-radius: 3px; text-transform: uppercase; align-self: center; }
+  .cell.y { background: var(--yes-bg); color: var(--yes); }
+  .cell.c { background: var(--cite-bg); color: var(--cite); }
+  .cell.g { background: var(--rule); color: var(--ink-2); }
+  .cell.t { background: var(--cite-bg); color: var(--cite); }
+  .row.trans { border-left: 4px solid var(--cite); }
+  .row .note { grid-column: 1 / -1; font-size: 14.5px; color: var(--ink-2); border-top: 1px dashed var(--rule); padding-top: 8px; margin-top: 2px; }
+  .row .note b { font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 11px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); font-weight: 600; margin-right: 6px; }
+  .more { color: var(--ink-3); font-size: 14.5px; margin: 4px 0 0; }
+  .pull { background: var(--card); border: 1px solid var(--rule); border-left: 5px solid var(--accent); border-radius: 5px; padding: 24px 28px; margin-top: 46px; display: flex; flex-direction: column; gap: 12px; }
+  .pull h2 { font-size: 22px; font-weight: 600; }
+  .pull p { margin: 0; max-width: 68ch; color: var(--ink-2); font-size: 17.5px; }
+  .pull p.lead { color: var(--ink); font-size: 19px; }
+  .pull p.caveat { border-top: 1px solid var(--rule); padding-top: 12px; color: var(--ink); }
+  footer { margin-top: 52px; padding-top: 20px; border-top: 1px solid var(--rule); font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 12px; color: var(--ink-3); display: flex; flex-wrap: wrap; gap: 6px 22px; }
+  @media (max-width: 900px) {
+    .grid-head { display: none; }
+    .row.r7, .row.r5 { grid-template-columns: 1fr 1fr; }
+    .row .hn, .row .note { grid-column: 1 / -1; }
+    .row .m::before { content: attr(data-l); display: block; font-family: "IBM Plex Mono", ui-monospace, monospace; font-size: 10.5px; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); margin-bottom: 2px; }
+    .row .cell { grid-column: 1 / -1; }
+  }
+</style></head><body>
+<div class="wrap">
+<header>
+  <div class="meta">Prospect map, counted August 2026, verified through 5 September 2026</div>
+  <h1>Hotels on the North Shore coast where someone else runs the restaurant</h1>
+  <p class="sub">Every full-service hotel on the public record across the North Shore, East Valley and Cape Bell regions (14 in all), each with its owner checked against the county record, and the 4 among them where an outside operator is confirmed running the restaurant today, 1 where the hotel runs the room under a licensed chef or brand, 1 where the operating structure is still being confirmed, and 1 where the hotel is changing hands.</p>
+</header>
+<section>
+  <div class="band"><h2>The market, counted</h2><span class="score good">14 full-service hotels</span></div>
+  <div class="chips">
+    <div class="chip"><span class="n">6</span><span class="l">North Shore<small>NS</small></span></div>
+    <div class="chip"><span class="n">4</span><span class="l">East Valley<small>EV</small></span></div>
+    <div class="chip"><span class="n">4</span><span class="l">Cape Bell<small>CB</small></span></div>
+  </div>
+  <p class="band-note">Counted from the state liquor licence file, the regional lodging association&#x27;s member list and press coverage, filtered to full-service properties, August 2026. 13 of the 14 carry an owner from the county parcel record, a registry filing or the owner&#x27;s own portfolio page; the rest say unknown. Confidence in the owner name: 8 high, 4 medium, 1 low, 1 unknown.</p>
+</section>
+<section>
+  <div class="band"><h2>The hotels where a third party already runs the restaurant</h2><span class="score good">4 ready</span><span class="score mixed">1 licensed</span><span class="score mixed">1 verify</span><span class="score mixed">1 in transition</span></div>
+  <p class="band-note">One row per hotel that passed the check, verified against 2026 sources on 4 and 5 September 2026. Ready means the owner is confirmed and an outside operator (a lease, a franchise or a management agreement) is open in the building today. Licensed means the hotel or its management company staffs and runs the room under an outside chef&#x27;s or brand&#x27;s name; a different deal shape. Verify means an outside name is in the building but the operating structure is not yet confirmed. In transition means the restaurant facts hold and the hotel is changing hands. Every other hotel in the count runs its restaurant in-house today.</p>
+  <div class="grid-head h7"><span>Region</span><span>City</span><span>Hotel</span><span>Restaurant</span><span>Who runs it today</span><span>Owner of record</span><span>Status</span></div>
+  <div class="row r7">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Kestrel Bay</span>
+    <span class="hn">The Kestrel Grand</span>
+    <span class="m" data-l="Restaurant">Fettleford Steak Co.</span>
+    <span class="m dim" data-l="Who runs it today">Ridgeline Restaurant Partners, the Fettleford Steak Co. franchisee for the region, under a lease with its own liquor licence; Fettleford is franchisor only</span>
+    <span class="m dim" data-l="Owner of record">Kestrel Bay Lodging LP (Vantrex Lodging Partners)</span>
+    <span class="cell y">Ready</span>
+    <span class="note"><b>Evidence</b>Ridgeline&#x27;s own site lists the Kestrel Bay unit with September 2026 events; the hotel&#x27;s dining page markets it; the licence file names Ridgeline Restaurant Partners LLC at 400 Harbor Road. Owner from the county parcel record, 14 August 2026, and the Vantrex Lodging Partners portfolio page, loaded 4 September 2026 (confidence high).</span>
+  </div>
+  <div class="row r7">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Port Ashby</span>
+    <span class="hn">Harbor Lights Hotel</span>
+    <span class="m" data-l="Restaurant">The Lantern Room; Quay Bar is hotel-run</span>
+    <span class="m dim" data-l="Who runs it today">Fensworth Clubs runs The Lantern Room under a lease and holds its own liquor licence at 12 Quay Street; the hotel&#x27;s dining page names Fensworth as the operator</span>
+    <span class="m dim" data-l="Owner of record">Quay Street Hospitality LLC (Ockendale Family Holdings)</span>
+    <span class="cell y">Ready</span>
+    <span class="note"><b>Evidence</b>Fensworth Clubs lists The Lantern Room as a current location and posted from it on 2 September 2026; the state licence file shows the Fensworth licence active on 28 August 2026. Owner from the county parcel record, 14 August 2026; the deed LLC&#x27;s mailing address is Ockendale Family Holdings&#x27; registered office (confidence high).</span>
+  </div>
+  <div class="row r7">
+    <span class="st">EV</span>
+    <span class="m dim" data-l="City">Marlow</span>
+    <span class="hn">Marlow House Hotel</span>
+    <span class="m" data-l="Restaurant">Fig and Feather</span>
+    <span class="m dim" data-l="Who runs it today">Ember and Oak Restaurant Group under a management agreement; Ember and Oak employs the restaurant team and holds the licence</span>
+    <span class="m dim" data-l="Owner of record">Marlow House Owner LLC (Thrumwold Lodging Trust)</span>
+    <span class="cell y">Ready</span>
+    <span class="note"><b>Evidence</b>Ember and Oak&#x27;s careers page advertised a Fig and Feather sous chef role on 20 August 2026; the hotel&#x27;s site names Ember and Oak as operator; listings updated August 2026. Owner from Thrumwold Lodging Trust&#x27;s FY2025 annual report property schedule; the county record was not reachable, so the deed itself is unchecked (confidence medium).</span>
+  </div>
+  <div class="row r7">
+    <span class="st">CB</span>
+    <span class="m dim" data-l="City">Yarrowfen</span>
+    <span class="hn">Yarrowfen Inn and Marina</span>
+    <span class="m" data-l="Restaurant">Tarnvey Oyster Bar; the Marina Deck is hotel-run</span>
+    <span class="m dim" data-l="Who runs it today">Tarnvey Hospitality, a lease tenant since 2021 with its own liquor licence at 1 Pier Road</span>
+    <span class="m dim" data-l="Owner of record">Yarrowfen Holdings LLC (Pier Road Investors)</span>
+    <span class="cell y">Ready</span>
+    <span class="note"><b>Evidence</b>Tarnvey&#x27;s site and social posts from 30 August 2026; the hotel&#x27;s dining page lists Tarnvey as an independent restaurant on the property; the licence file shows Tarnvey active. Owner from the county parcel record, 14 August 2026; the state registry lists Pier Road Investors as manager of the LLC, at the deed LLC&#x27;s mailing address (confidence high).</span>
+  </div>
+  <div class="row r7">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Port Ashby</span>
+    <span class="hn">The Ashby Terrace Hotel</span>
+    <span class="m" data-l="Restaurant">Quill</span>
+    <span class="m dim" data-l="Who runs it today">Hotel-run: the management company employs the restaurant team and the hotel entity holds the licence; Quill is a chef brand licensed to the hotel, not an outside operator</span>
+    <span class="m dim" data-l="Owner of record">Terrace Hotel Partners LLC (Oakhallow Capital)</span>
+    <span class="cell c">Licensed</span>
+    <span class="note"><b>Evidence</b>The hotel&#x27;s private dining enquiries go to a hotel address; the licence at 77 Terrace Avenue is held by Terrace Hotel Partners LLC; a Quill chef&#x27;s table dinner is advertised on the hotel&#x27;s site for 18 September 2026. Owner from the county parcel record, 14 August 2026; the deed LLC mails to the Oakhallow Capital office (confidence high).</span>
+  </div>
+  <div class="row r7">
+    <span class="st">EV</span>
+    <span class="m dim" data-l="City">Fenwick</span>
+    <span class="hn">The Fenwick Hotel</span>
+    <span class="m" data-l="Restaurant">Osteria Quintale (opened April 2026 in the former Cobalt Room space)</span>
+    <span class="m dim" data-l="Who runs it today">Marrowgate Hospitality Group runs the kitchen; the hotel markets it as its own restaurant; whether this is a lease or an owner-affiliated venture is not confirmed</span>
+    <span class="m dim" data-l="Owner of record">Fenwick Hotel Owner LLC (Kestlemoor Hotel Group)</span>
+    <span class="cell g">Verify</span>
+    <span class="note"><b>Evidence</b>Osteria Quintale&#x27;s own page says it is inside The Fenwick Hotel, June 2026; no licence in Marrowgate Hospitality&#x27;s name appears at 210 Station Street in the August 2026 file. Owner from the county parcel record, 14 August 2026; the Kestlemoor link rests on the registry&#x27;s registered agent only (confidence medium).</span>
+  </div>
+  <div class="row r7 trans">
+    <span class="st">CB</span>
+    <span class="m dim" data-l="City">Salt Hollow</span>
+    <span class="hn">Salt Hollow Resort</span>
+    <span class="m" data-l="Restaurant">Driftline Kitchen</span>
+    <span class="m dim" data-l="Who runs it today">Driftline Restaurant Co. under a lease, open, with its own licence at 3000 Dune Road</span>
+    <span class="m dim" data-l="Owner of record">Salt Hollow Resort LLC (Drindle Partners); a sale to a Brindlewick Holdings entity was approved by the county development authority on 21 May 2026, closing not publicly confirmed</span>
+    <span class="cell t">In transition</span>
+    <span class="note"><b>Evidence</b>Driftline&#x27;s site and listings updated August 2026; the resort&#x27;s dining page lists Driftline Kitchen. Owner from the county parcel record, 14 August 2026, still names Salt Hollow Resort LLC; the authority&#x27;s published minutes of 21 May 2026 record the approved assignment (confidence medium).</span>
+    <span class="note"><b>Note</b>The authority&#x27;s minutes record the buyer&#x27;s representative stating that the current restaurant operator is expected to stay in place. No later county document confirms the closing.</span>
+  </div>
+</section>
+<section>
+  <div class="band"><h2>Deals coming loose</h2><span class="score mixed">6 shown</span></div>
+  <p class="band-note">Hotels in the 14 whose verification notes record a sale, an ownership or operator change, a renovation or closure, a default, or a new build, dated 2025 or later, most recent first. Each is re-checked before anyone is contacted.</p>
+  <div class="grid-head h5"><span>Region</span><span>City</span><span>Hotel</span><span>What moved</span><span>When / source</span></div>
+  <div class="row r5">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Port Ashby</span>
+    <span class="hn">Port Ashby Harbor Hotel</span>
+    <span class="m" data-l="What moved">Sold by Ockendale Family Holdings to an Vantrex Lodging Partners entity; the hotel manager is unchanged; the restaurant is run in-house.</span>
+    <span class="m dim" data-l="When / source">Deed dated 3 June 2026; county parcel record; regional business press, 12 June 2026</span>
+  </div>
+  <div class="row r5">
+    <span class="st">CB</span>
+    <span class="m dim" data-l="City">Salt Hollow</span>
+    <span class="hn">Salt Hollow Resort</span>
+    <span class="m" data-l="What moved">Sale of the resort to a Brindlewick Holdings entity approved by the county development authority; buyer expects to keep the restaurant operator in place. Closing not publicly confirmed.</span>
+    <span class="m dim" data-l="When / source">Approved 21 May 2026; development authority minutes; county parcel record still names the seller</span>
+  </div>
+  <div class="row r5">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Kestrel Bay</span>
+    <span class="hn">Kestrel Bay Beach Resort</span>
+    <span class="m" data-l="What moved">Closed for a full renovation; reopening announced for spring 2027; no restaurant operator announced.</span>
+    <span class="m dim" data-l="When / source">Closed April 2026; the resort&#x27;s own site; building permit issued March 2026</span>
+  </div>
+  <div class="row r5">
+    <span class="st">EV</span>
+    <span class="m dim" data-l="City">Marlow</span>
+    <span class="hn">The Marlow Riverside</span>
+    <span class="m" data-l="What moved">Hotel management switched to Thrumwold Hospitality Management from Bramblecourt Hotels; the owner is unchanged.</span>
+    <span class="m dim" data-l="When / source">January 2026; Thrumwold Hospitality Management&#x27;s portfolio page; regional business press, 9 January 2026</span>
+  </div>
+  <div class="row r5">
+    <span class="st">EV</span>
+    <span class="m dim" data-l="City">Redgate</span>
+    <span class="hn">Redgate Conference Hotel</span>
+    <span class="m" data-l="What moved">Notice of default recorded against the owner entity on the hotel loan; no sale or receivership recorded since.</span>
+    <span class="m dim" data-l="When / source">November 2025; county recorder index; loan servicer commentary</span>
+  </div>
+  <div class="row r5">
+    <span class="st">NS</span>
+    <span class="m dim" data-l="City">Port Ashby</span>
+    <span class="hn">The Quayside (under construction)</span>
+    <span class="m" data-l="What moved">New-build hotel under construction; opening announced for 2027; restaurant operator not announced.</span>
+    <span class="m dim" data-l="When / source">Permit issued September 2025; county building permit index; the developer&#x27;s project page</span>
+  </div>
+</section>
+<div class="pull">
+  <h2>How this was built</h2>
+  <p class="lead"><strong>The count.</strong> The 14 hotels were enumerated in August 2026 from the state liquor licence file, the regional lodging association&#x27;s member list and press coverage, then filtered to full-service properties in the North Shore, East Valley and Cape Bell regions. Every hotel where a second licensee sat at the hotel&#x27;s street address, or where an outside name was reported in the building, was then checked against the hotel&#x27;s own dining page, the restaurant&#x27;s own site, the licence file and current listings, most recently on 5 September 2026. 4 have an outside operator running the restaurant today, 1 is a licensed chef deal on a hotel-run room, 1 has an operating structure still being confirmed, and 1 is changing hands. Every other hotel in the count runs its restaurant in-house today.</p>
+  <p><strong>The owners.</strong> Owners were taken from the county parcel record, then unmasked by matching the deed LLC&#x27;s tax mailing address to a corporate office, and cross-checked against the state corporate registry, annual reports for public owners and the owners&#x27; own portfolio pages. Where a county system was form-gated or unreachable, the row says so instead of guessing.</p>
+  <p><strong>What is not on this page.</strong> No contacts, no phone numbers, no email addresses, no pricing and no terms. Any hotel whose owner or restaurant could not be verified says so in its row or stays out of the table.</p>
+  <p class="caveat">Ownership moves. Every row here is re-checked against the county record, the hotel&#x27;s own site and current listings before any contact is made.</p>
+</div>
+<footer>
+  <span>Market count: 14 full-service hotels from the state liquor licence file (extract dated 11 August 2026), the regional lodging association member list and press.</span>
+  <span>Owner verification: county parcel records (Ashby, Kestrel, Marlow, Redgate and Cape Bell counties), checked 14 August 2026; state corporate registry; annual reports of public owners.</span>
+  <span>Operator status: hotel and restaurant sites, the state licence file, listings and social posts, checked 4 and 5 September 2026.</span>
+</footer>
+</div>
+</body></html>

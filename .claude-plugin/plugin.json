@@ -1,0 +1,10 @@
+{
+  "name": "leadgen-skills",
+  "version": "0.1.0",
+  "description": "Three Claude Code skills for research-first B2B lead generation: prospect-map (enumerate and verify a whole market from public records), discovery-sheet (turn a call transcript into notes, ICP and a next-call skeleton), one-pager (one personalised document per prospect, in the sender's voice).",
+  "author": { "name": "Aaxelera", "url": "https://aaxelera.com" },
+  "license": "MIT",
+  "homepage": "https://skills.aaxelera.com",
+  "repository": "https://github.com/montgomery-pixel/leadgen-skills",
+  "keywords": ["lead-generation", "b2b-sales", "prospecting", "discovery-call", "outreach", "public-records", "market-map", "personalisation"]
+}

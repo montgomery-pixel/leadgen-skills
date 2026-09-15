@@ -1,0 +1,43 @@
+{
+  "title": "Hotels on the North Shore coast where someone else runs the restaurant",
+  "meta": "Prospect map, counted August 2026, verified through 5 September 2026",
+  "subtitle": "Every full-service hotel on the public record across the North Shore, East Valley and Cape Bell regions ({total} in all), each with its owner checked against the county record, and the {ready} among them where an outside operator is confirmed running the restaurant today, {licensed} where the hotel runs the room under a licensed chef or brand, {verify} where the operating structure is still being confirmed, and {transition} where the hotel is changing hands.",
+  "marketLabel": "full-service hotels",
+  "marketNote": "Counted from the state liquor licence file, the regional lodging association's member list and press coverage, filtered to full-service properties, August 2026. {ownerKnown} of the {total} carry an owner from the county parcel record, a registry filing or the owner's own portfolio page; the rest say unknown.",
+  "regions": { "NS": "North Shore", "EV": "East Valley", "CB": "Cape Bell" },
+  "regionOrder": ["NS", "EV", "CB"],
+  "columns": {
+    "region": "Region",
+    "city": "City",
+    "entity": "Hotel",
+    "unit": "Restaurant",
+    "counterparty": "Who runs it today",
+    "owner": "Owner of record",
+    "status": "Status"
+  },
+  "tableTitle": "The hotels where a third party already runs the restaurant",
+  "tableNote": "One row per hotel that passed the check, verified against 2026 sources on 4 and 5 September 2026. Ready means the owner is confirmed and an outside operator (a lease, a franchise or a management agreement) is open in the building today. Licensed means the hotel or its management company staffs and runs the room under an outside chef's or brand's name; a different deal shape. Verify means an outside name is in the building but the operating structure is not yet confirmed. In transition means the restaurant facts hold and the hotel is changing hands. Every other hotel in the count runs its restaurant in-house today.",
+  "watchTitle": "Deals coming loose",
+  "watchNote": "Hotels in the {total} whose verification notes record a sale, an ownership or operator change, a renovation or closure, a default, or a new build, dated 2025 or later, most recent first. Each is re-checked before anyone is contacted.",
+  "watchCap": 40,
+  "method": [
+    {
+      "lead": "The count.",
+      "text": "The {total} hotels were enumerated in August 2026 from the state liquor licence file, the regional lodging association's member list and press coverage, then filtered to full-service properties in the North Shore, East Valley and Cape Bell regions. Every hotel where a second licensee sat at the hotel's street address, or where an outside name was reported in the building, was then checked against the hotel's own dining page, the restaurant's own site, the licence file and current listings, most recently on 5 September 2026. {ready} have an outside operator running the restaurant today, {licensed} is a licensed chef deal on a hotel-run room, {verify} has an operating structure still being confirmed, and {transition} is changing hands. Every other hotel in the count runs its restaurant in-house today."
+    },
+    {
+      "lead": "The owners.",
+      "text": "Owners were taken from the county parcel record, then unmasked by matching the deed LLC's tax mailing address to a corporate office, and cross-checked against the state corporate registry, annual reports for public owners and the owners' own portfolio pages. Where a county system was form-gated or unreachable, the row says so instead of guessing."
+    },
+    {
+      "lead": "What is not on this page.",
+      "text": "No contacts, no phone numbers, no email addresses, no pricing and no terms. Any hotel whose owner or restaurant could not be verified says so in its row or stays out of the table."
+    }
+  ],
+  "caveat": "Ownership moves. Every row here is re-checked against the county record, the hotel's own site and current listings before any contact is made.",
+  "footer": [
+    "Market count: {total} full-service hotels from the state liquor licence file (extract dated 11 August 2026), the regional lodging association member list and press.",
+    "Owner verification: county parcel records (Ashby, Kestrel, Marlow, Redgate and Cape Bell counties), checked 14 August 2026; state corporate registry; annual reports of public owners.",
+    "Operator status: hotel and restaurant sites, the state licence file, listings and social posts, checked 4 and 5 September 2026."
+  ]
+}

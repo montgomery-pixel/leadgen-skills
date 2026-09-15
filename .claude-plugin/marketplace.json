@@ -1,0 +1,19 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "aaxelera-leadgen-skills",
+  "owner": { "name": "Aaxelera", "url": "https://aaxelera.com" },
+  "metadata": {
+    "description": "Three Claude Code skills that do the first steps of B2B lead generation the way a research-first outreach shop does it: map a whole market from public records, turn a sales call into a discovery sheet, and write one personalised page per prospect."
+  },
+  "plugins": [
+    {
+      "name": "leadgen-skills",
+      "source": "./",
+      "description": "prospect-map, discovery-sheet and one-pager: market mapping from public records, call transcripts into discovery sheets, and one personalised document per prospect.",
+      "author": { "name": "Aaxelera", "url": "https://aaxelera.com" },
+      "category": "sales",
+      "homepage": "https://skills.aaxelera.com",
+      "keywords": ["lead-generation", "b2b-sales", "prospecting", "discovery-call", "outreach", "public-records", "market-map", "personalisation"]
+    }
+  ]
+}
