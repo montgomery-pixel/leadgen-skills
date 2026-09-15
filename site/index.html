@@ -436,7 +436,8 @@ p { margin: 0; }
 .capture-form .hp,
 .capture-form .button,
 .capture-form .error,
-.capture-form .small { grid-column: 1 / -1; }
+.capture-form .small,
+.capture-form .field-wide { grid-column: 1 / -1; }
 
 @media (min-width: 56rem) {
   .capture-form {
@@ -609,8 +610,9 @@ input:focus {
   <section class="capture" id="walkthrough" aria-labelledby="capture-title">
     <div class="wrap capture-grid">
       <div class="capture-copy">
-        <h2 id="capture-title">Get the 10-minute walkthrough and the sample market map</h2>
-        <p>The walkthrough shows one run of each skill, start to finish. <a href="/example-map.html">The sample map</a> is a full rendered market page, fictional data, so you can see what "every row carries its evidence" looks like before you run it on your own market.</p>
+        <h2 id="capture-title">Tell us your market and we will run the map for you</h2>
+        <p>The map is the slow one. Most of the time goes into checking rows rather than finding them, and on a real market that is a few nights. Tell us the metro you sell into and who your buyer is, and we will run it and send back the count and the first ten owners, at no charge.</p>
+        <p>The <a href="/walkthrough.html">ten-minute walkthrough</a> and the <a href="/example-map.html">sample market map</a> are open, no email needed.</p>
       </div>
       <div class="capture-side">
         <form class="capture-form" id="capture-form" method="post" action="/api/subscribe">
@@ -622,15 +624,19 @@ input:focus {
             <label for="capture-name">First name <span class="optional">(optional)</span></label>
             <input id="capture-name" name="name" type="text" autocomplete="given-name" placeholder="First name">
           </div>
+          <div class="field field-wide">
+            <label for="capture-market">Your market</label>
+            <input id="capture-market" name="market" type="text" required autocomplete="off" placeholder="Denver metro, independent property managers">
+          </div>
           <div class="hp" aria-hidden="true">
             <label for="capture-website">Website</label>
             <input id="capture-website" name="website" type="text" tabindex="-1" autocomplete="off">
           </div>
-          <button type="submit" class="button button-primary" id="capture-submit">Send me the walkthrough</button>
+          <button type="submit" class="button button-primary" id="capture-submit">Run it on my market</button>
           <p class="error" id="capture-error" role="alert" hidden></p>
-          <p class="small">You get the walkthrough and the map by email, then occasional notes on what is working in outreach. Unsubscribe in one click.</p>
+          <p class="small">Monty replies from his own inbox, usually the same day. One line about your market is enough.</p>
         </form>
-        <p class="done" id="capture-done" tabindex="-1" hidden>Done. You get the walkthrough and the map by email.</p>
+        <p class="done" id="capture-done" tabindex="-1" hidden>Got it. We will run the map and come back with the count, usually the same day.</p>
       </div>
     </div>
   </section>
@@ -754,6 +760,7 @@ input:focus {
     var payload = {
       email: field('email').value.trim(),
       name: field('name').value.trim(),
+      market: field('market').value.trim(),
       source: 'skills.aaxelera.com'
     };
 

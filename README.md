@@ -29,6 +29,8 @@ Inside Claude Code:
 
 Then `/prospect-map`, `/discovery-sheet` and `/one-pager` are available in any project.
 
+Before you install, you can read the [ten-minute walkthrough](https://skills.aaxelera.com/walkthrough) (one run of each skill, start to finish, with the files each one produces) and the [sample market map](https://skills.aaxelera.com/example-map). Both are open, no email needed.
+
 ## Quick start
 
 ### prospect-map, 30 seconds to launch
@@ -91,8 +93,12 @@ skills/
 
 Every skill ships a fully fictional worked example in `references/` (Harbor Lights Hotel, Fensworth Clubs, Dana Reyes at Fensworth Advisory). None of it is a real client.
 
+## If you would rather not run it yourself
+
+The map is the slow one. Most of the time goes into checking rows rather than finding them, and on a real market that is a few nights.
+
+Aaxelera does this for clients. If you want to see it on your own market first, tell us the metro you sell into and who your buyer is, and we will run it and send back the count and the first ten owners, at no charge: [skills.aaxelera.com](https://skills.aaxelera.com). The skills stay free either way.
+
 ## Licence
 
 MIT. See `LICENSE`.
-
-Want us to run this for you? aaxelera.com
